@@ -50,16 +50,6 @@ func Connect(config PostgresConfig, logger *zap.Logger) (*gorm.DB, error) {
 	sqlDB.SetConnMaxLifetime(time.Hour)
 	sqlDB.SetConnMaxIdleTime(10 * time.Minute)
 
-	// Enable PostGIS extension
-	if err := db.Exec("CREATE EXTENSION IF NOT EXISTS postgis").Error; err != nil {
-		logger.Warn("failed to create PostGIS extension (may not be needed)", zap.Error(err))
-	}
-
-	// Enable UUID extension
-	if err := db.Exec(`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`).Error; err != nil {
-		logger.Warn("failed to create uuid-ossp extension", zap.Error(err))
-	}
-
 	logger.Info("database connected",
 		zap.String("host", config.Host),
 		zap.Int("port", config.Port),

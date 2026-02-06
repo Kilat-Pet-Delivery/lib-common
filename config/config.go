@@ -77,6 +77,16 @@ func LoadJWTConfig(v *viper.Viper) JWTConfig {
 	}
 }
 
+// GetAppEnv returns the current application environment.
+// Defaults to "production" if APP_ENV is not set.
+func GetAppEnv(v *viper.Viper) string {
+	env := v.GetString("APP_ENV")
+	if env == "" {
+		return "production"
+	}
+	return env
+}
+
 // GetServicePort returns the port for a specific service.
 func GetServicePort(v *viper.Viper, key string) string {
 	port := v.GetInt(key)
