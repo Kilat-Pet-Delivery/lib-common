@@ -69,7 +69,7 @@ func (e *AuditableEntity) IsDeleted() bool {
 type DomainEvent struct {
 	ID          uuid.UUID              `json:"id"`
 	Type        string                 `json:"type"`
-	AggregateID uuid.UUID             `json:"aggregate_id"`
+	AggregateID uuid.UUID              `json:"aggregate_id"`
 	Version     int64                  `json:"version"`
 	Payload     map[string]interface{} `json:"payload"`
 	OccurredAt  time.Time              `json:"occurred_at"`

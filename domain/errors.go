@@ -19,10 +19,10 @@ var (
 
 // DomainError is a structured error with code and message for API responses.
 type DomainError struct {
-	Code       int    `json:"code"`
-	Message    string `json:"message"`
-	Detail     string `json:"detail,omitempty"`
-	Err        error  `json:"-"`
+	Code    int    `json:"code"`
+	Message string `json:"message"`
+	Detail  string `json:"detail,omitempty"`
+	Err     error  `json:"-"`
 }
 
 // Error implements the error interface.
